@@ -1,0 +1,70 @@
+<div ng-controller="ShowSurvivorController">
+
+    <form name="survivorForm" novalidate>
+        <div class="panel panel-success">
+
+            <div class="panel panel-heading">
+                Details of the Survivor
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Name</label>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="survivor.name"
+                                   name="name">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Age</label>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="survivor.age"
+                                   name="age"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Gender</label>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="survivor.gender"
+                                   name="gender"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Last Location</label>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="survivor.lonlat"
+                                   name="lonlat"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-success navbar-btn"
+                        ng-click="update()">Update
+                </button>
+                <button class="btn btn-warning navbar-btn"
+                        ng-click="getInventory(survivor.id)">Inventory
+                </button>
+                <button class="btn btn-default navbar-btn"
+                        ng-click="clear()">Clear
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
