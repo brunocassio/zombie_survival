@@ -18,9 +18,17 @@ zombieApp.controller("ListAllSurvivorsController", ['$scope', '$http', 'PeopleSe
             enableColumnsMenus: false
         };
 
-        $scope.fetchInventory = function (inventory) {
-            var inv = inventory;
-            console.log(inv);
+        $scope.fetchInventoryBySurvivor = function (survivor) {
+            if(survivor.location !== null){
+                $http.get(survivor.location)
+                    .then(function (result) {
+                        if(result && result.data){
+                            $scope.survivor = result.data;
+                        }else{
+                            console.log('there is no survivor');
+                        }
+                    });
+            }
         };
 
         $scope.loadData = function () {
