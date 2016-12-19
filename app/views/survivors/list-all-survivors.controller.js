@@ -18,6 +18,10 @@ zombieApp.controller("ListAllSurvivorsController", ['$scope', '$http', '$state',
             enableColumnsMenus: false
         };
 
+        $scope.addSurvivor = function () {
+            $state.go('addSurvivor');
+        };
+
         $scope.showSurvivor = function (survivor) {
             if(survivor.location !== null){
                 var id = survivor.location.substr(53,survivor.location.lenght);

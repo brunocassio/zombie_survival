@@ -22,4 +22,9 @@ zombieApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             controller: 'ShowSurvivorController',
             params: {survivor : null}
         })
+        .state('addSurvivor', {
+            url: '/add-survivor',
+            templateUrl: 'app/views/survivors/add-survivor.html',
+            controller: 'AddSurvivorController'
+        })
 }]);

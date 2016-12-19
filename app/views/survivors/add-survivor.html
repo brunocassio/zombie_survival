@@ -1,10 +1,10 @@
-<div ng-controller="ShowSurvivorController">
+<div ng-controller="AddSurvivorController">
 
     <form name="survivorForm" novalidate>
         <div class="panel panel-success">
 
             <div class="panel panel-heading">
-                Details of the Survivor
+                Add New Survivor
             </div>
 
             <div class="panel-body">
@@ -53,19 +53,26 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div ui-grid="gridOptions"></div>
-                    </div>
+                <div class="position">
+                    <input type="number" ng-model="marker.coords.latitude" step="0.001" title="This is the “Y” of the coordinate"/>
+                    <div class="huge">,</div>
+                    <input type="number" ng-model="marker.coords.longitude" title="This is the “X” of the coordinate" step="0.001" /></div>
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+                    <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
+                <div ng-cloak>
+                    <ul>
+                        <li>coords update ctr: {{coordsUpdates}}</li>
+                        <li>dynamic move ctr: {{dynamicMoveCtr}}</li>
+                    </ul>
                 </div>
+
             </div>
 
             <div class="panel-footer">
                 <button class="btn btn-success navbar-btn"
-                        ng-click="update()">Update
-                </button>
-                <button class="btn btn-warning navbar-btn"
-                        ng-click="getInventory(survivor.id)">Inventory
+                        ng-click="save()">Save
                 </button>
                 <button class="btn btn-default navbar-btn"
                         ng-click="clear()">Clear
