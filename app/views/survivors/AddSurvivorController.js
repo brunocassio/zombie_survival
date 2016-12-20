@@ -8,10 +8,6 @@ zombieApp.controller("AddSurvivorController", ['$scope', '$http', '$state', '$lo
         $scope.options = {
             scrollwheel: false
         };
-
-        $scope.options = {
-            scrollwheel: false
-        };
         $scope.coordsUpdates = 0;
         $scope.dynamicMoveCtr = 0;
         $scope.marker = {
@@ -50,16 +46,37 @@ zombieApp.controller("AddSurvivorController", ['$scope', '$http', '$state', '$lo
 
         $timeout(function() {
             $scope.marker.coords = {
-                latitude: 56.162939,
-                longitude: 10.203921
+                latitude: -16.6862492,
+                longitude: -49.2867181
             };
             $scope.dynamicMoveCtr++;
             $timeout(function() {
                 $scope.marker.coords = {
-                    latitude: 56.162939,
-                    longitude: 10.203921
+                    latitude: -16.6862492,
+                    longitude: -49.2867181
                 };
                 $scope.dynamicMoveCtr++;
             }, 2000);
         }, 1000);
+
+        $scope.gender = [
+            {valor: 'M', descricao: 'M'},
+            {valor: 'F', descricao: 'F'}
+        ];
+
+        $scope.items = [
+            {valor: 'water', descricao: 'Water'},
+            {valor: 'food', descricao: 'Food'},
+            {valor: 'medication', descricao: 'Medication'},
+            {valor: 'ammunition', descricao: 'Ammunition'},
+
+        ];
+
+        $scope.add = function () {
+
+        };
+
+        $scope.back = function () {
+            $state.go('listAllSurvivors');
+        }
     }]);
