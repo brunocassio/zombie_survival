@@ -15,7 +15,7 @@
                             <input type="text"
                                    class="form-control"
                                    ng-model="survivor.name"
-                                   name="name">
+                                   name="name"/>
                         </div>
                     </div>
 
@@ -26,7 +26,7 @@
                                    class="form-control"
                                    ng-model="survivor.age"
                                    name="age"
-                            >
+                            />
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@
                                    class="form-control"
                                    ng-model="marker.coords.latitude"
                                    name="lat"
-                            >
+                            />
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@
                                    class="form-control"
                                    ng-model="marker.coords.longitude"
                                    name="lon"
-                            >
+                            />
                         </div>
                     </div>
                 </div>
@@ -77,17 +77,21 @@
                                    class="form-control"
                                    ng-model="survivor.items.quantity"
                                    name="quantity"
-                            >
+                            />
                         </div>
                     </div>
 
                     <div class="col-md-3">
-                        <button class="btn btn-success navbar-btn"
-                                ng-click="add()">Add
-                        </button>
+                        <div class="form-group">
+                            <label class="control-label"></label>
+                            <button class="form-control btn btn-success"
+                                    ng-click="add()">Add
+                            </button>
+                        </div>
                     </div>
 
                 </div>
+
 
                 <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
                     <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">

@@ -32,7 +32,7 @@ input {
     background-color: transparent;
     border: 0;
     width: 10em;
-    top: -5px;
+    /*top: -5px;*/
     position: relative;
 }
 
@@ -55,7 +55,7 @@ input, input:focus {
     position: relative;
 }
 
-[ng-app="myApp"] {
+[ng-app="app"] {
     height: 100vh;
     width: 100vw;
 }
