@@ -35,11 +35,6 @@ input {
     position: relative;
 }
 
-input:nth-child(1) {
-    text-align: right;
-    left: 20px;
-}
-
 input, input:focus {
     outline: none;
     -moz-box-shadow: none !important;

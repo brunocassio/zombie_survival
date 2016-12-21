@@ -7,15 +7,16 @@ zombieApp.controller("ListAllSurvivorsController", ['$scope', '$http', '$state',
 
         $scope.gridOptions = {
             columnDefs: [
-                {name: 'Name', field: 'name', width: 225},
-                {name: 'Age', field:'age', width: 100},
-                {name: 'Gender', field:'gender', width: 150},
-                {name: 'Last Location', field:'lonlat', width: 350},
-                {name: 'Infected?', field:'infected?', width: 150},
-                {name: 'Details', field:'detailstemplate', cellTemplate: 'app/template/grid/cell-template.html'}
+                {displayName: 'Name', field: 'name'},
+                {displayName: 'Age', field:'age', enableFiltering: false},
+                {displayName: 'Gender', field:'gender', enableFiltering: false},
+                {displayName: 'Last Location', field:'lonlat',  width: 350, enableFiltering: false},
+                {displayName: 'Infected?', field:'infected?', enableFiltering: false},
+                {displayName: 'Details', field:'detailstemplate', cellTemplate: 'app/template/grid/cell-template.html', enableFiltering: false}
             ],
             data:'listAllSurvivors',
-            enableColumnsMenus: false
+            enableFiltering: true
+
         };
 
         $scope.addSurvivor = function () {
