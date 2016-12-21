@@ -17,7 +17,7 @@ zombieApp.directive('selectInput', [function () {
     };
 
 
-    function link(scope, element, attrs) {
+    function link(scope) {
         scope.idInputSelect = 'selectInput' + scope.$id;
         scope.classColspan = 'col-md-'+ (scope.colspan);
 

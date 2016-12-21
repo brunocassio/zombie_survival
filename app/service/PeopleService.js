@@ -9,6 +9,9 @@ zombieApp.service('PeopleService', ['PeopleRepository',
             },
             fecthSingleSurvivor: function (idSurvivor) {
                 return PeopleRepository.fecthSingleSurvivor(idSurvivor);
+            },
+            registerNewSurvivor: function (survivor) {
+                return PeopleRepository.registerNewSurvivor(survivor);
             }
         }
     }]);

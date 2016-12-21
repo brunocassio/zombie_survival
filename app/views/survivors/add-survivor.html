@@ -65,8 +65,8 @@
                     <select-input
                             label="Items"
                             colspan="3"
-                            provider="items"
-                            ng-model="survivor.items.value"
+                            provider="selectItems"
+                            ng-model="value"
                     >
                     </select-input>
 
@@ -75,7 +75,7 @@
                             <label class="control-label">Quantity</label>
                             <input type="number"
                                    class="form-control"
-                                   ng-model="survivor.items.quantity"
+                                   ng-model="quantity"
                                    name="quantity"
                             />
                         </div>
@@ -85,25 +85,32 @@
                         <div class="form-group">
                             <label class="control-label"></label>
                             <button class="form-control btn btn-success"
-                                    ng-click="add()">Add
+                                    ng-click="add(value, quantity)">Add
                             </button>
                         </div>
                     </div>
-
                 </div>
 
-
-                <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
-                    <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
-                    </ui-gmap-marker>
-                </ui-gmap-google-map>
-                <div ng-cloak>
-                    <ul>
-                        <li>coords update ctr: {{coordsUpdates}}</li>
-                        <li>dynamic move ctr: {{dynamicMoveCtr}}</li>
-                    </ul>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ui-grid="gridOptions"></div>
+                    </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+                            <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+                            </ui-gmap-marker>
+                        </ui-gmap-google-map>
+                        <div ng-cloak>
+                            <ul>
+                                <li>coords update ctr: {{coordsUpdates}}</li>
+                                <li>dynamic move ctr: {{dynamicMoveCtr}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="panel-footer">

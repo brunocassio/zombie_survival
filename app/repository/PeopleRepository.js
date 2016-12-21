@@ -13,6 +13,10 @@ zombieApp.factory('PeopleRepository', ['Restangular', 'AbstractRepository',
             this.fecthSingleSurvivor = function (idSurvivor) {
                 return restangular.one(this.route + '/people/' + idSurvivor).get();
             };
+
+            this.registerNewSurvivor = function (survivor) {
+                return restangular.all(this.route + '/people').post(survivor);
+            }
         }
 
         AbstractRepository.extend(PeopleRepository);

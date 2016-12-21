@@ -3,6 +3,11 @@
 zombieApp.controller("AddSurvivorController", ['$scope', '$http', '$state', '$log', '$timeout', 'PeopleService', 'PropertiesService',
     function ($scope, $http, $state, $log, $timeout, PeopleService, PropertiesService) {
 
+
+        $scope.index = null;
+        $scope.item = {};
+        $scope.items = [];
+
         $scope.map = { center: { latitude: -16.6862492, longitude: -49.2867181}, zoom: 14 };
 
         $scope.options = {
@@ -64,16 +69,47 @@ zombieApp.controller("AddSurvivorController", ['$scope', '$http', '$state', '$lo
             {valor: 'F', descricao: 'F'}
         ];
 
-        $scope.items = [
-            {valor: 'water', descricao: 'Water'},
-            {valor: 'food', descricao: 'Food'},
-            {valor: 'medication', descricao: 'Medication'},
-            {valor: 'ammunition', descricao: 'Ammunition'},
+        $scope.selectItems = [
+            {valor: 'Water', descricao: 'Water'},
+            {valor: 'Food', descricao: 'Food'},
+            {valor: 'Medication', descricao: 'Medication'},
+            {valor: 'Ammunition', descricao: 'Ammunition'},
 
         ];
 
-        $scope.add = function () {
+        $scope.gridOptions = {
+            columnDefs: [
+                {name: 'Name', field: 'name', width: 400},
+                {name: 'Quantity', field:'quantity', width: 400},
+                {name: '', field:'acoes', cellTemplate: 'app/template/grid/delete-template.html'}
+            ],
+            data:'items',
+            enableColumnsMenus: false
+        };
 
+        $scope.survivor = {
+            lonlat: "point(".concat($scope.marker.coords.latitude)
+                            .concat(",")
+                            .concat($scope.marker.coords.longitude)
+                            .concat(")"),
+            items: $scope.items
+        };
+
+        $scope.save = function () {
+            console.log($scope.survivor);
+
+            PeopleService.registerNewSurvivor($scope.survivor);
+
+        };
+
+        $scope.removeItem = function (linha) {
+            var index = $scope.items.indexOf(linha);
+            $scope.items.splice(index, 1);
+        };
+
+        $scope.add = function (name, quantity) {
+            $scope.item = {name: name, quantity: quantity};
+            $scope.items.push($scope.item);
         };
 
         $scope.back = function () {
