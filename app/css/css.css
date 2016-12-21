@@ -29,7 +29,6 @@ body {
 input {
     font-family: 'Inconsolata', monospace ;
     font-size: 1.25em;
-    background-color: transparent;
     border: 0;
     width: 10em;
     position: relative;

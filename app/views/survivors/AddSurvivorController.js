@@ -95,10 +95,6 @@ zombieApp.controller("AddSurvivorController", ['$scope', '$http', '$state', '$lo
             items: null
         };
 
-        $scope.items.forEach(function(item) {
-            $scope.survivor.items = item.name + ':' + item.quantity + (';' + ($scope.survivor.items || ''));
-        });
-
         $scope.clear = function () {
             $scope.index = null;
             $scope.item = {};

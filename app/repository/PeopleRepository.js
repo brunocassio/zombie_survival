@@ -16,6 +16,10 @@ zombieApp.factory('PeopleRepository', ['Restangular', 'AbstractRepository',
 
             this.registerNewSurvivor = function (survivor) {
                 return restangular.all(this.route + '/people').post(survivor);
+            };
+
+            this.updateLastLocation = function (idSurvivor, lastLocation) {
+                return restangular.one(this.route + '/people/' + idSurvivor).patch({lonlat: lastLocation});
             }
         }
 

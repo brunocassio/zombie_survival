@@ -12,6 +12,9 @@ zombieApp.service('PeopleService', ['PeopleRepository',
             },
             registerNewSurvivor: function (survivor) {
                 return PeopleRepository.registerNewSurvivor(survivor);
+            },
+            updateLastLocation: function (idSurvivor, lastLocation) {
+                return PeopleRepository.updateLastLocation(idSurvivor, lastLocation);
             }
         }
     }]);
