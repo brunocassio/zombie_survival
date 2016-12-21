@@ -15,6 +15,10 @@ zombieApp.controller("ShowSurvivorController", ['$scope', '$http', '$state', '$s
             enableColumnsMenus: false
         };
 
+        $scope.back = function () {
+          $state.go('listAllSurvivors');
+        };
+
         $scope.getInventory = function (id) {
             PropertiesService.getInventory(id).then(function (result) {
                 if(result && result.plain()){

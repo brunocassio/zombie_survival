@@ -1,7 +1,7 @@
 'use strict';
 
-zombieApp.controller("AddSurvivorController", ['$scope', '$http', '$state', '$log', '$timeout', 'PeopleService', 'PropertiesService',
-    function ($scope, $http, $state, $log, $timeout, PeopleService, PropertiesService) {
+zombieApp.controller("AddSurvivorController", ['$scope', '$http', '$state', '$log', '$timeout', 'PeopleService', 'AlertService',
+    function ($scope, $http, $state, $log, $timeout, PeopleService, AlertService) {
 
 
         $scope.index = null;
@@ -89,17 +89,35 @@ zombieApp.controller("AddSurvivorController", ['$scope', '$http', '$state', '$lo
 
         $scope.survivor = {
             lonlat: "point(".concat($scope.marker.coords.latitude)
-                            .concat(",")
+                            .concat(" ")
                             .concat($scope.marker.coords.longitude)
                             .concat(")"),
-            items: $scope.items
+            items: null
+        };
+
+        $scope.items.forEach(function(item) {
+            $scope.survivor.items = item.name + ':' + item.quantity + (';' + ($scope.survivor.items || ''));
+        });
+
+        $scope.clear = function () {
+            $scope.index = null;
+            $scope.item = {};
+            $scope.items = [];
+            $scope.survivor = {};
+            $scope.value = null;
+            $scope.quantity = null;
         };
 
         $scope.save = function () {
-            console.log($scope.survivor);
+            $scope.survivor.items = null;
+
+            $scope.items.forEach(function(item) {
+                $scope.survivor.items = item.name + ':' + item.quantity + (';' + ($scope.survivor.items || ''));
+            });
 
             PeopleService.registerNewSurvivor($scope.survivor);
-
+            AlertService.success('Survivor registered with success!');
+            $scope.clear();
         };
 
         $scope.removeItem = function (linha) {
