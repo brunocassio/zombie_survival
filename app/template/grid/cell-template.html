@@ -1,6 +1,12 @@
 <div class="ui-grid-cell-contents" title="TOOLTIP">
     <button class="btn btn-warning btn-xs"
-            ng-click="grid.appScope.showSurvivor(row.entity)">
-        <i class="fa fa-search"></i>
+            ng-click="grid.appScope.showSurvivor(row.entity)"
+            data-toggle="tooltip" data-placement="top" title="Edit">
+        <i class="fa fa-pencil-square-o"></i>
+    </button>
+    <button class="btn btn-danger btn-xs"
+            ng-click="grid.appScope.flagSurvivor(row.entity)"
+            data-toggle="tooltip" data-placement="top" title="Flag">
+        <i class="fa fa-medkit"></i>
     </button>
 </div>

@@ -20,6 +20,12 @@ zombieApp.factory('PeopleRepository', ['Restangular', 'AbstractRepository',
 
             this.updateLastLocation = function (idSurvivor, lastLocation) {
                 return restangular.one(this.route + '/people/' + idSurvivor).patch({lonlat: lastLocation});
+            };
+
+            this.registerInfectedPerson = function (suspectId, yourId) {
+                return restangular
+                    .one(this.route + '/people/' + suspectId + '/report_infection')
+                    .customPOST(undefined ,{infected: yourId});
             }
         }
 

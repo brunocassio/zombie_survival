@@ -15,6 +15,9 @@ zombieApp.service('PeopleService', ['PeopleRepository',
             },
             updateLastLocation: function (idSurvivor, lastLocation) {
                 return PeopleRepository.updateLastLocation(idSurvivor, lastLocation);
+            },
+            registerInfectedPerson: function (suspectId, yourId) {
+                return PeopleRepository.registerInfectedPerson(suspectId, yourId);
             }
         }
     }]);

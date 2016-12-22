@@ -1,0 +1,53 @@
+<div ng-controller="FlagSurvivorController">
+
+    <form class="form-group" name="flagForm" novalidate>
+        <div class="panel panel-success">
+
+            <div class="panel panel-heading">
+                Flag Survivor
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ui-grid="gridOptions"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Suspect Id</label>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="suspectId"
+                                   name="suspectId"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Your Id</label>
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="yourId"
+                                   name="yourId"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-success navbar-btn"
+                        ng-click="register()">Register
+                </button>
+                <button class="btn btn-warning navbar-btn"
+                        ng-click="back()">Back
+                </button>
+                <button class="btn btn-default navbar-btn"
+                        ng-click="clear()">Clear
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

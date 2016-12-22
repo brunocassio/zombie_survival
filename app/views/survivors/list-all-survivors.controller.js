@@ -12,11 +12,26 @@ zombieApp.controller("ListAllSurvivorsController", ['$scope', '$http', '$state',
                 {displayName: 'Gender', field:'gender', enableFiltering: false},
                 {displayName: 'Last Location', field:'lonlat',  width: 350, enableFiltering: false},
                 {displayName: 'Infected?', field:'infected?', enableFiltering: false},
-                {displayName: 'Details', field:'detailstemplate', cellTemplate: 'app/template/grid/cell-template.html', enableFiltering: false}
+                {displayName: 'Actions', field:'detailstemplate', cellTemplate: 'app/template/grid/cell-template.html', enableFiltering: false}
             ],
             data:'listAllSurvivors',
             enableFiltering: true
 
+        };
+
+        $scope.flagSurvivor = function (survivor) {
+            if(survivor.location !== null){
+                var id = survivor.location.substr(53,survivor.location.lenght);
+
+                PeopleService.fecthSingleSurvivor(id).then(function (result) {
+                    if(result && result.plain()){
+                        $scope.survivor = result.plain();
+                        $state.go('flagSurvivor', {survivor : $scope.survivor})
+                    }else{
+                        console.log('there is no survivor');
+                    }
+                });
+            }
         };
 
         $scope.addSurvivor = function () {
