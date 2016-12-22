@@ -70,12 +70,20 @@ zombieApp.controller("ShowSurvivorController",
 
         $scope.gridOptions = {
             columnDefs: [
-                {name: 'Quantity', field: 'quantity', width: 400},
-                {name: 'Name', field:'item.name', width: 400},
-                {name: 'Points', field:'item.points', width: 400}
+                {name: 'Quantity', field: 'quantity'},
+                {name: 'Name', field:'item.name'},
+                {name: 'Points', field:'item.points'}
             ],
-            data:'inventory',
+            data:'listInventory',
             enableColumnsMenus: false
+        };
+
+        $scope.returnTotalOfPoints = function (quantity, points) {
+            if(quantity && points){
+                return quantity * points;
+            }else{
+                return null;
+            }
         };
 
         $scope.update = function () {
@@ -103,11 +111,23 @@ zombieApp.controller("ShowSurvivorController",
         };
 
         $scope.getInventory = function (id) {
+            $scope.listInventory = [];
+            var inventory = {};
+            $scope.item = {}
             PropertiesService.getInventory(id).then(function (result) {
                 if(result && result.plain()){
                     $scope.inventory = result.plain();
                     if($scope.inventory.length <= 0){
                         AlertService.error('The inventory is empty!');
+                    }else{
+                        $scope.inventory.forEach(function(item) {
+                            inventory = {
+                                item: item,
+                                quantity: item.quantity,
+                                total: item.item.points * item.quantity
+                            };
+                            $scope.listInventory.push(inventory);
+                        });
                     }
                 }
             })
