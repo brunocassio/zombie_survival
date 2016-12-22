@@ -24,8 +24,8 @@ zombieApp.factory('PeopleRepository', ['Restangular', 'AbstractRepository',
 
             this.registerInfectedPerson = function (suspectId, yourId) {
                 return restangular
-                    .one(this.route + '/people/' + suspectId + '/report_infection')
-                    .customPOST(undefined ,{infected: yourId});
+                    .all(this.route + '/people/' + yourId + '/report_infection')
+                    .customPOST(undefined , undefined, {infected: suspectId}, {});
             }
         }
 

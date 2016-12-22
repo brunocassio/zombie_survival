@@ -8,8 +8,8 @@ zombieApp.controller("FlagSurvivorController",
 
         $scope.gridOptions = {
             columnDefs: [
-                {displayName: 'Name', field:'name'},
-                {displayName: 'Location', field: 'location', width: 800, enableFiltering: false},
+                {displayName: 'Name', field:'name', width: 200},
+                {displayName: 'Location', field: 'location', width: 750, enableFiltering: false},
                 {displayName: 'Infected', field: 'infected?', enableFiltering: false}
             ],
             data:'listAllSurvivors',
@@ -18,6 +18,7 @@ zombieApp.controller("FlagSurvivorController",
 
         $scope.register = function () {
             PeopleService.registerInfectedPerson($scope.suspectId, $scope.yourId);
+            AlertService.success("A survivor has been registered as infected!");
 
         };
 
