@@ -85,7 +85,9 @@
                         <div class="form-group">
                             <label class="control-label"></label>
                             <button class="form-control btn btn-success"
-                                    ng-click="add(value, quantity)">Add
+                                    ng-click="add(value, quantity)">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Add
                             </button>
                         </div>
                     </div>
@@ -115,13 +117,19 @@
 
             <div class="panel-footer">
                 <button class="btn btn-success navbar-btn"
-                        ng-click="save()">Save
+                        ng-click="save()">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    Save
                 </button>
                 <button class="btn btn-warning navbar-btn"
-                        ng-click="back()">Back
+                        ng-click="back()">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    Back
                 </button>
-                <button class="btn btn-default navbar-btn"
-                        ng-click="clear()">Clear
+                <button class="btn btn-primary navbar-btn"
+                        ng-click="clear()">
+                    <i class="fa fa-eraser" aria-hidden="true"></i>
+                    Clear
                 </button>
             </div>
         </div>

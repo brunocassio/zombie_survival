@@ -1,0 +1,11 @@
+<div class="jumbotron">
+    <div class="row">
+        <h2>{{report.report.description}}</h2>
+    </div>
+    <div class="row">
+        <h3>Total: {{report.report.average_items_quantity_per_person | percentage:2}}</h3>
+        <h3>Healthy Person: {{report.report.average_items_quantity_per_healthy_person | percentage:2}}</h3>
+    </div>
+</div>
+
+

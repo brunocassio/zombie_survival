@@ -31,9 +31,16 @@ zombieApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             templateUrl: 'app/views/reports/list-reports.html',
             controller: 'ReportsController'
         })
-        .state('infectedReport', {
-            url: '/infected-report',
-            templateUrl: 'app/views/reports/infected-report.html',
-            controller: 'ReportsController'
+        .state('listReports.infectedReport', {
+            templateUrl: 'app/views/reports/infected-report.html'
+        })
+        .state('listReports.nonInfectedReport', {
+            templateUrl: 'app/views/reports/non-infected-report.html'
+        })
+        .state('listReports.peopleInventoryReport', {
+            templateUrl: 'app/views/reports/people-inventory-report.html'
+        })
+        .state('listReports.infectedPoints', {
+            templateUrl: 'app/views/reports/infected-points-report.html'
         })
 }]);
