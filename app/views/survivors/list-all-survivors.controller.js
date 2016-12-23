@@ -1,7 +1,7 @@
 'use strict';
 
-zombieApp.controller("ListAllSurvivorsController", ['$scope', '$http', '$state', 'PeopleService', 'PropertiesService',
-    function ($scope, $http, $state, PeopleService, PropertiesService) {
+zombieApp.controller("ListAllSurvivorsController", ['$scope', '$http', '$state', 'PeopleService',
+    function ($scope, $http, $state, PeopleService) {
 
         $scope.listAllSurvivors = [];
 
@@ -19,19 +19,8 @@ zombieApp.controller("ListAllSurvivorsController", ['$scope', '$http', '$state',
 
         };
 
-        $scope.flagSurvivor = function (survivor) {
-            if(survivor.location !== null){
-                var id = survivor.location.substr(53,survivor.location.lenght);
-
-                PeopleService.fecthSingleSurvivor(id).then(function (result) {
-                    if(result && result.plain()){
-                        $scope.survivor = result.plain();
-                        $state.go('flagSurvivor', {survivor : $scope.survivor})
-                    }else{
-                        console.log('there is no survivor');
-                    }
-                });
-            }
+        $scope.flagSurvivor = function () {
+            $state.go('flagSurvivor');
         };
 
         $scope.addSurvivor = function () {
@@ -39,29 +28,20 @@ zombieApp.controller("ListAllSurvivorsController", ['$scope', '$http', '$state',
         };
 
         $scope.showSurvivor = function (survivor) {
+            $scope.infected = null;
             if(survivor.location !== null){
                 var id = survivor.location.substr(53,survivor.location.lenght);
+                $scope.infected = survivor['infected?'];
 
                 PeopleService.fecthSingleSurvivor(id).then(function (result) {
                     if(result && result.plain()){
                         $scope.survivor = result.plain();
-                        $state.go('showSurvivor', {survivor : $scope.survivor})
+                        $state.go('showSurvivor', {survivor : $scope.survivor, infected: $scope.infected});
                     }else{
                         console.log('there is no survivor');
                     }
                 });
             }
-        };
-
-        $scope.getInventory = function (id) {
-            PropertiesService.getInventory(id).then(function (result) {
-                if(result && result.plain()){
-                    $scope.inventory = result.plain();
-                    $state.go('showInventory', {inventory : $scope.inventory});
-                }else{
-                    console.log('there is no inventory');
-                }
-            })
         };
 
         $scope.fetchInventoryBySurvivor = function (survivor) {
@@ -76,6 +56,10 @@ zombieApp.controller("ListAllSurvivorsController", ['$scope', '$http', '$state',
                         }
                     });
             }
+        };
+
+        $scope.showReports = function () {
+            $state.go('listReports');
         };
 
         $scope.loadData = function () {

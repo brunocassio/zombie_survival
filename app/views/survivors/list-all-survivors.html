@@ -4,9 +4,6 @@
     </div>
 
     <div class="panel-body">
-        <button class="btn btn-success navbar-btn"
-                ng-click="addSurvivor()">New Survivor
-        </button>
 
         <div class="row">
             <div class="col-md-12">
@@ -16,5 +13,21 @@
 
     </div>
 
-    <div class="panel-footer"></div>
+    <div class="panel-footer">
+        <button class="btn btn-success navbar-btn"
+                ng-click="addSurvivor()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            New Survivor
+        </button>
+        <button class="btn btn-danger navbar-btn"
+                ng-click="flagSurvivor()">
+            <i class="fa fa-medkit"></i>
+            Flag a Survivor
+        </button>
+        <button class="btn btn-primary navbar-btn"
+                ng-click="showReports()">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            Reports
+        </button>
+    </div>
 </div>

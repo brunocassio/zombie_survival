@@ -4,7 +4,7 @@
         <div class="panel panel-success">
 
             <div class="panel panel-heading">
-                Details of the Survivor
+                Edit Survivor
             </div>
 
             <div class="panel-body">
@@ -63,6 +63,8 @@
                     </div>
                 </div>
 
+                <hr class="divider">
+
                 <div class="row">
                     <div class="col-md-12">
                         <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
@@ -81,13 +83,19 @@
 
             <div class="panel-footer">
                 <button class="btn btn-success navbar-btn"
-                        ng-click="update()">Update
+                        ng-click="update()">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    Save
                 </button>
                 <button class="btn btn-warning navbar-btn"
-                        ng-click="back()">Back
+                        ng-click="back()">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    Back
                 </button>
-                <button class="btn btn-default navbar-btn"
-                        ng-click="getInventory(survivor.id)">Inventory
+                <button class="btn btn-primary navbar-btn"
+                        ng-click="getInventory(survivor.id)">
+                    <i class="fa fa-archive" aria-hidden="true"></i>
+                    Inventory
                 </button>
             </div>
         </div>

@@ -38,22 +38,24 @@
     <script src="app/views/survivors/list-all-survivors.controller.js"></script>
     <script src="app/views/survivors/ShowSurvivorController.js"></script>
     <script src="app/views/survivors/AddSurvivorController.js"></script>
-    <script src="app/views/inventory/InventoryController.js"></script>
     <script src="app/views/survivors/FlagSurvivorController.js"></script>
+    <script src="app/views/reports/ReportsController.js"></script>
 
     <script src="app/repository/AbstractRepository.js"></script>
     <script src="app/repository/PeopleRepository.js"></script>
     <script src="app/repository/PropertiesRepository.js"></script>
+    <script src="app/repository/ReportRepository.js"></script>
 
     <script src="app/service/alert.service.js"></script>
     <script src="app/service/PeopleService.js"></script>
     <script src="app/service/PropertiesService.js"></script>
+    <script src="app/service/ReportService.js"></script>
 
     <script src="app/directivas/select/select.directive.js"></script>
     <!-- fim do js -->
 </head>
 <body class="container">
-<div ng-controller="IndexController as vm">
+<div ng-controller="IndexController">
     <ui-view></ui-view>
 </div>
 </body>

@@ -10,17 +10,11 @@ zombieApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             templateUrl: 'app/views/survivors/list-all-survivors.html',
             controller: 'ListAllSurvivorsController'
         })
-        .state('showInventory', {
-            url: '/show-inventory',
-            templateUrl: 'app/views/inventory/show-inventory.html',
-            controller: 'InventoryController',
-            params: {inventory : null}
-        })
         .state('showSurvivor', {
             url: '/show-survivor',
             templateUrl: 'app/views/survivors/show-survivor.html',
             controller: 'ShowSurvivorController',
-            params: {survivor : null}
+            params: {survivor : null, infected: null}
         })
         .state('addSurvivor', {
             url: '/add-survivor',
@@ -31,5 +25,15 @@ zombieApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             url: '/flag-survivor',
             templateUrl: 'app/views/survivors/flag-survivor.html',
             controller: 'FlagSurvivorController'
+        })
+        .state('listReports', {
+            url: '/list-reports',
+            templateUrl: 'app/views/reports/list-reports.html',
+            controller: 'ReportsController'
+        })
+        .state('infectedReport', {
+            url: '/infected-report',
+            templateUrl: 'app/views/reports/infected-report.html',
+            controller: 'ReportsController'
         })
 }]);

@@ -5,6 +5,7 @@ zombieApp.controller("ShowSurvivorController",
     function ($scope, $http, $state, $stateParams, $log, $timeout, PeopleService, PropertiesService, AlertService) {
 
         $scope.survivor = $stateParams.survivor;
+        $scope.infected = $stateParams.infected;
         $scope.lat = null;
         $scope.lon = null;
         $scope.lonlat = null;
@@ -71,8 +72,9 @@ zombieApp.controller("ShowSurvivorController",
         $scope.gridOptions = {
             columnDefs: [
                 {name: 'Quantity', field: 'quantity'},
-                {name: 'Name', field:'item.name'},
-                {name: 'Points', field:'item.points'}
+                {name: 'Name', field:'item.item.name'},
+                {name: 'Points', field:'item.item.points'},
+                {name: 'Total', field:'total'}
             ],
             data:'listInventory',
             enableColumnsMenus: false
@@ -113,7 +115,12 @@ zombieApp.controller("ShowSurvivorController",
         $scope.getInventory = function (id) {
             $scope.listInventory = [];
             var inventory = {};
-            $scope.item = {}
+            $scope.item = {};
+
+            if($scope.infected){
+                AlertService.error("You can't access the Inventory! Survivor is Infected! ");
+                return;
+            }
             PropertiesService.getInventory(id).then(function (result) {
                 if(result && result.plain()){
                     $scope.inventory = result.plain();
